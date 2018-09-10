@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MaintainService</string>
+    <string name="title_work_list">我的工单</string>
+    <string name="title_add_work_order">新增工单</string>
+    <string name="title_knowledge_base">知识库</string>
+    <string name="title_my_information">我的信息</string>
+    <string name="title_all_work_order">全部工单</string>
+    <string name="title_unsigned_order">待签收工单</string>
+    <string name="title_uncheck_order">待签到工单</string>
+    <string name="title_unfinished_order">待完成工单</string>
+    <string name="title_uncomment_order">未评价工单</string>
+    <string name="title_finished_order">已完成工单</string>
+    <string name="title_fault_library">故障库</string>
+    <string name="title_database">资料库</string>
+    <string name="title_fault_type">设备档案</string>
+    <string name="title_maintain_histoty">维修记录</string>
+</resources>
