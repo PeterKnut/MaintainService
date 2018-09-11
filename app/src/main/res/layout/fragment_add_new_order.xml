@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddNewOrderFragment"
-    android:background="@color/UIBackground"
+    android:background="@color/white"
     android:orientation="vertical">
-
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:title=" "
         android:layout_weight="1"
         android:background="@color/colorPrimary"
@@ -20,15 +19,19 @@
             android:layout_height="wrap_content"
             android:text="@string/title_add_work_order"
             android:textColor="@color/white"
-            android:layout_gravity="center"
-
-            />
+            android:layout_gravity="center"/>
     </android.support.v7.widget.Toolbar>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        ></ListView>
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.5"
+        android:scrollbars="none">
+
+        <include layout="@layout/add_order_tablelayout"/>
+
+
+    </ScrollView>
 
 </LinearLayout>
+

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:stretchColumns="*"
+    android:divider="@drawable/table_v_divider"
+    android:showDividers="middle">
+    <!-- 客户名称 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_client_name"
+            android:layout_gravity="center|top"
+            />
+
+        <EditText
+            android:id="@+id/clientNameEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_client_name"
+            />
+    </TableRow>
+
+    <!-- 联系人姓名 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_contact_name"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/contactNameEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_contact_name"
+            />
+    </TableRow>
+
+    <!-- 联系人电话 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_contact_phone"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/contactPhoneEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_contact_phone" />
+    </TableRow>
+
+    <!-- 地址 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_client_address"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/clientAddressEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_client_address" />
+    </TableRow>
+
+    <!-- 报修时间自动输入 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_repair_time"
+            android:layout_gravity="center|center"
+            />
+
+        <EditText
+            android:id="@+id/repairTimeEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_repair_time"/>
+    </TableRow>
+
+    <!-- 预计开始时间 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_expected_start_time"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/expectedStartTimeEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_expected_start_time" />
+    </TableRow>
+
+    <!-- 预计结束时间 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_expected_finish_time"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/expectedFinishEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_expected_finish_time" />
+    </TableRow>
+
+    <!-- 设备编号 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_equipment_id"
+            android:layout_gravity="center|bottom"
+            />
+
+        <Spinner
+            android:id="@+id/equitmentIdSpinner"
+            android:layout_gravity="top"
+            android:entries="@array/equipment_id">
+        </Spinner>
+    </TableRow>
+
+    <!-- 设备名称自动输入 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_equipment_name"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/equitmentNameEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_client_name" />
+    </TableRow>
+
+    <!-- 故障类型 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title1_fault_type"
+            android:layout_gravity="center|bottom"
+            />
+
+      <Spinner
+          android:id="@+id/addOrderFaultTypeSpinner"
+          android:layout_gravity="top"
+          android:entries="@array/fault_type">
+
+      </Spinner>
+    </TableRow>
+
+    <!-- 备注 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_remarks"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/remarksEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_remarks" />
+    </TableRow>
+
+    <!-- 故障描述 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_fault_description"
+            android:layout_gravity="center|bottom"
+            />
+
+        <EditText
+            android:id="@+id/faultDescriptionEditText"
+            android:layout_width="@dimen/editText_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="top"
+            android:hint="@string/hint_fault_description"/>
+    </TableRow>
+
+    <!-- 选择照片 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_select_pictures"
+            android:layout_gravity="center|bottom"
+            />
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </TableRow>
+
+    <!-- 选择视频 -->
+    <TableRow
+        android:layout_marginBottom="5dp">
+        <TextView
+            android:layout_width="@dimen/textView_width"
+            android:layout_height="@dimen/textView_height"
+            android:text="@string/title_select_video"
+            android:layout_gravity="center|bottom"
+            />
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+
+    <TableRow
+        android:gravity="center"
+        android:layout_marginTop="15dp">
+        <Button
+            android:id="@+id/submitOrderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_submit"
+            android:background="@drawable/button_rectangle_style"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"/>
+    </TableRow>
+</TableLayout>

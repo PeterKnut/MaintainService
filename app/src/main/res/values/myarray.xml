@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fault_type">
+        <item>故障类型1</item>
+        <item>故障类型2</item>
+        <item>故障类型3</item>
+        <item>故障类型4</item>
+    </string-array>
+    <string-array name="equipment_id">
+        <item>EQ1</item>
+        <item>EQ2</item>
+        <item>EQ3</item>
+        <item>EQ4</item>
+    </string-array>
+</resources>
