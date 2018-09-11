@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyInformationFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MyInformationFragment"
+    android:background="@color/UIBackground"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_infromation_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_my_information" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        app:title=" ">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/title_my_information"
+            android:textColor="@color/white"/>
+    </android.support.v7.widget.Toolbar>
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        >
 
-</FrameLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/myNameButton"
+            android:text="@string/title_my_name"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_style"
+            android:drawablePadding="20dp"
+            android:paddingBottom="10dp"
+            android:lineSpacingMultiplier="1.2"
+
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/historyOrderButton"
+            android:text="@string/title_my_history_order"
+            android:layout_marginBottom="0dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_style"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/myInformButton"
+            android:text="@string/title_inform_center"
+            android:layout_marginBottom="0dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_style"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/aboutTianDuanButton"
+            android:text="@string/title_about_tianduan"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_style"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/helpButton"
+            android:text="@string/title_help"
+            android:layout_gravity="center"
+            android:background="@drawable/button_style"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settingButton"
+            android:text="@string/title_setting"
+            android:layout_gravity="center"
+            android:background="@drawable/button_style"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

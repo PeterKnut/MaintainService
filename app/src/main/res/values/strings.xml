@@ -14,4 +14,11 @@
     <string name="title_database">资料库</string>
     <string name="title_fault_type">设备档案</string>
     <string name="title_maintain_histoty">维修记录</string>
+    <string name="title_my_name">姓名</string>
+    <string name="title_my_history_order">我的工单</string>
+    <string name="title_about_tianduan">关于天缎</string>
+    <string name="title_inform_center">消息中心</string>
+
+    <string name="title_help">帮助与反馈</string>
+    <string name="title_setting">设置</string>
 </resources>
