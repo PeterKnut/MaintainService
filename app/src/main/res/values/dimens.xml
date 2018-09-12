@@ -6,5 +6,6 @@
     <dimen name="editText_width">240dp</dimen>
     <dimen name="textView_width">100dp</dimen>
     <dimen name="textView_height">40dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

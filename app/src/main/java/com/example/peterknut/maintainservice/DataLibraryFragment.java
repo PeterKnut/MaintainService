@@ -10,15 +10,16 @@ import android.view.ViewGroup;
 
 
 
-public class AllWorkOrderFragment extends Fragment {
+public class DataLibraryFragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_work_order, container, false);
+        return inflater.inflate(R.layout.fragment_data_library, container, false);
     }
+
 
 
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".WorkListFragment"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_work_order_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        app:title=" "
+        app:navigationIcon="@drawable/ic_notifications_black_24dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/title_work_list"
+            android:textColor="@color/white"/>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        >
+        <!-- 主界面 -->
+        <FrameLayout
+            android:id="@+id/work_list_framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <!-- 测滑界面 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/allWorkOrderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_all_work_order" />
+
+            <Button
+                android:id="@+id/unSignedOrderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_unsigned_order" />
+
+            <Button
+                android:id="@+id/unCheckOrderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_uncheck_order" />
+
+            <Button
+                android:id="@+id/unFinishedOrderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_unfinished_order" />
+
+            <Button
+                android:id="@+id/unCommentOrderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_uncomment_order" />
+
+            <Button
+                android:id="@+id/finishedOrderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_finished_order" />
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllWorkOrderFragment">
+    tools:context=".EquipmentFileFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_all_work_order" />
+        android:text="@string/title_equipment_file" />
 
 </FrameLayout>

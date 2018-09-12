@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -15,10 +15,11 @@ public class MainActivity extends AppCompatActivity {
      * 几个主要的Fragment
      * 全部工单页面、新增工单页面、故障库页面、我的信息页面
      */
-    private AllWorkOrderFragment allWorkOrderFragment;
-    private FaultLibraryFragment faultLibraryFragment;
+    private WorkListFragment workListFragment;
+    private KnowledgeBaseFragment knowledgeBaseFragment;
     private AddNewOrderFragment addNewOrderFragment;
     private MyInformationFragment myInformationFragment;
+
 
     /**
      *用于Fragment切换
@@ -46,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_work_list:
-                    switchFragment(allWorkOrderFragment);
+                    switchFragment(workListFragment);
                     return true;
                 case R.id.navigation_add_work_order:
                     switchFragment(addNewOrderFragment);
                     return true;
                 case R.id.navigation_knowledge_base:
-                    switchFragment(faultLibraryFragment);
+                    switchFragment(knowledgeBaseFragment);
                     return true;
                 case R.id.navigation_my_information:
                     switchFragment(myInformationFragment);
@@ -83,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //初始化各变量
-        allWorkOrderFragment = new AllWorkOrderFragment();
-        faultLibraryFragment = new FaultLibraryFragment();
+        workListFragment = new WorkListFragment();
+        knowledgeBaseFragment = new KnowledgeBaseFragment();
         myInformationFragment = new MyInformationFragment();
         addNewOrderFragment = new AddNewOrderFragment();
 
-        currentFragment = allWorkOrderFragment;
+        currentFragment = workListFragment;
 
         //为这个活动设置主页面
         transaction = getSupportFragmentManager().beginTransaction();
