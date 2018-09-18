@@ -18,6 +18,7 @@ public class AllWorkOrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_all_work_order, container, false);
+
     }
 
 
