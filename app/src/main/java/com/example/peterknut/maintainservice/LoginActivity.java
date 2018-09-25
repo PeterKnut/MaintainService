@@ -35,14 +35,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+import com.zhy.http.okhttp.cookie.CookieJarImpl;
+import com.zhy.http.okhttp.cookie.store.PersistentCookieStore;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -111,16 +116,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
     private void attemptLogin() {
 
+        //session 持久化
+        CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .cookieJar(cookieJar)
+                //其他配置
+                .build();
 
+        OkHttpUtils.initClient(okHttpClient);
         // Reset errors.
         mPhoneView.setError(null);
         mPasswordView.setError(null);
@@ -156,11 +161,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(String username, String password) {
-    //    String url = GlobalVariablies.URL + "login";
-        String url = "http://bootdo.com:8080/login";
 
         OkHttpUtils.post()
-                .url(url)
+                .url(GlobalVariablies.LOGIN_URL)
                 .addParams("username", username)
                 .addParams("password",password)
                 .build().execute( new StringCallback() {
@@ -173,9 +176,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(String response, int id) {
                 try {
                     JSONObject json = new JSONObject(response);
-                    // TODO: 2018/9/16 登陆成功确认信息修改
                     if(json.getString("msg").equals("操作成功")){
+
                         // TODO: 2018/9/16 进行该用户个人信息初始化
+                        initGlobalVariables();
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -191,17 +196,94 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    //从服务器获取用户的信息并对其进行初始化
+    private void initUser(){
+
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_USER_DETAIL_URL)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        System.out.println(e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        JSONObject json = null;
+                        try {
+                            json = new JSONObject(response);
+                            GlobalVariablies.user = new User(
+                                    json.getString("username"),
+                                    json.getString("name"),
+                                    json.getString("password"),
+                                    json.getString("mobile"),
+                                    json.getInt("status"),
+                                    json.getLong("sex"),
+                                    json.getString("liveAddress"),
+                                    json.getString("province"),
+                                    json.getString("city"),
+                                    json.getString("district")
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
 
-
-
-
-
+                    }
+                });
 
 
     }
 
+    //从服务器获取用户的订单信息并对其进行初始化
+    private void initOrder(){
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_ORDER_URL)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
 
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            String jsonArray = json.getString("rows");
+                            GlobalVariablies.allWorkOrder = new LinkedList<>(JSON.parseArray(jsonArray,Order.class));
+                            System.out.println(GlobalVariablies.allWorkOrder.get(1).getOrderId());
+                            System.out.println(jsonArray);
+                            //初始化各状态工单
+                            for(int i =0; i<GlobalVariablies.allWorkOrder.size();i++){
+                                switch (GlobalVariablies.allWorkOrder.get(i).getStatus()){
+                                    case 0:
+                                        GlobalVariablies.unSignedInOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                        break;
+                                    case 1:
+                                        GlobalVariablies.unCheckInOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                        break;
+                                    case 2:
+                                        GlobalVariablies.unFinishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                        break;
+                                    case 3:
+                                        GlobalVariablies.unCommentOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                        break;
+                                    case 4:
+                                        GlobalVariablies.finishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                        break;
+                                }
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
 
     //判断输入的手机号是否有效
     private boolean isPhoneValid(String phone) {
@@ -230,7 +312,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    //登陆成功后进行全局变量初始化
+    // TODO: 2018/9/26 用户工单初始化，个人信息初始化
+    public void initGlobalVariables(){
+        initUser();
+        initOrder();
 
+
+    }
 
 
 

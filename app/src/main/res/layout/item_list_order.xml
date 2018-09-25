@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- todo  order简要布局-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_order_id"
+        />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/orderId"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_repair_time"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/repairTime" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/title_client_name"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clientName"
+/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:text="@string/title_contact_name"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/contactName"
+ />
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:text="@string/title_equipment_name"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equipmentName"
+   />
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:text="@string/title_order_status"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orderStatus"
+/>
+
+    <Button
+        android:id="@+id/orderDetailButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="详情"
+        />
+
+</LinearLayout>

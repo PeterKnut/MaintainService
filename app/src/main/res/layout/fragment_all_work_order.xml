@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AllWorkOrderFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/all_order_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_all_work_order" />
+        android:layout_height="wrap_content">
+
+
+
+    </ListView>
 
 </FrameLayout>

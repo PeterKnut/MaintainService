@@ -23,6 +23,8 @@
     <string name="title_help">帮助与反馈</string>
     <string name="title_setting">设置</string>
 
+    <string name="title_order_id">工单号</string>
+    <string name="title_order_status">工单状态</string>
     <string name="title_client_name">&#160;&#160; &#160;&#160;&#160;  客户名称:</string>
     <string name="hint_client_name">请输入客户名称:</string>
     <string name="title_repair_time">&#160; &#160; &#160; &#160; &#160; 报修时间</string>
@@ -63,6 +65,11 @@
     <string name="error_field_required">请输入手机号</string>
     <string name="permission_rationale">"需要打开联系人权限方便自动补全输入"
     </string>
+    <string name="title_activity_personal_infromation">PersonalInfromation</string>
+    <string name="title_activity_history_order">HistoryOrderActivity</string>
+    <string name="title_activity_about_tianduan">AboutTianduanActivity</string>
+    <string name="title_activity_help">HelpActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 
 
 </resources>
