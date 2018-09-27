@@ -61,10 +61,9 @@ import okhttp3.Response;
 import okio.BufferedSink;
 
 import static android.Manifest.permission.READ_CONTACTS;
-// TODO: 2018/9/14  运行之后首页面修改为此
-// TODO: 2018/9/16 测试session是否持久化
 
-//
+
+
 /**
  * 登录界面
  */
@@ -77,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
     // 界面控件
     private AutoCompleteTextView mPhoneView;
     private EditText mPasswordView;
+
+    private boolean isLegalUser = false;
 
 
     @Override
@@ -110,8 +111,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+                if(isLegalUser) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
+
         });
+
 
 
     }
@@ -180,10 +188,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         // TODO: 2018/9/16 进行该用户个人信息初始化
                         initGlobalVariables();
-
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        isLegalUser = true;
 
                     }else{
                         // TODO: 2018/9/16 弹出一个提示框，提示手机号或者密码错误
@@ -247,6 +252,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
 
+
                     }
 
                     @Override
@@ -255,27 +261,30 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject json = new JSONObject(response);
                             String jsonArray = json.getString("rows");
                             GlobalVariablies.allWorkOrder = new LinkedList<>(JSON.parseArray(jsonArray,Order.class));
-                            System.out.println(GlobalVariablies.allWorkOrder.get(1).getOrderId());
-                            System.out.println(jsonArray);
+
                             //初始化各状态工单
                             for(int i =0; i<GlobalVariablies.allWorkOrder.size();i++){
                                 switch (GlobalVariablies.allWorkOrder.get(i).getStatus()){
-                                    case 0:
+                                    case 1:
                                         GlobalVariablies.unSignedInOrder.add(GlobalVariablies.allWorkOrder.get(i));
                                         break;
-                                    case 1:
+                                    case 2:
                                         GlobalVariablies.unCheckInOrder.add(GlobalVariablies.allWorkOrder.get(i));
                                         break;
-                                    case 2:
+                                    case 3:
                                         GlobalVariablies.unFinishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
                                         break;
-                                    case 3:
+                                    case 4:
                                         GlobalVariablies.unCommentOrder.add(GlobalVariablies.allWorkOrder.get(i));
                                         break;
-                                    case 4:
+                                    case 5:
                                         GlobalVariablies.finishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
                                         break;
+
                                 }
+
+
+
                             }
 
                         } catch (JSONException e) {
@@ -283,6 +292,12 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    
+    //从服务器获取故障库内容并对其初始化
+    // TODO: 2018/9/27 从服务器获取故障类型 
+    private void initFault(){
+        
     }
 
     //判断输入的手机号是否有效
@@ -315,9 +330,9 @@ public class LoginActivity extends AppCompatActivity {
     //登陆成功后进行全局变量初始化
     // TODO: 2018/9/26 用户工单初始化，个人信息初始化
     public void initGlobalVariables(){
+
         initUser();
         initOrder();
-
 
     }
 

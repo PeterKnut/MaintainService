@@ -2,13 +2,12 @@ package com.example.peterknut.maintainservice;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -48,7 +47,7 @@ public class OrderAdapter extends BaseAdapter {
     // TODO: 2018/9/22 将list中的order中信息显示到各控件，并给
     //listView控件的item
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         convertView = LayoutInflater.from(mContext).inflate(R.layout.item_list_order, parent, false);
 
@@ -61,31 +60,62 @@ public class OrderAdapter extends BaseAdapter {
         Button orderDetailButton = convertView.findViewById(R.id.orderDetailButton);
 
         orderId.setText(mOrder.get(position).getOrderId());
-        repairTime.setText(mOrder.get(position).getRepairTime().toString());
+  //      repairTime.setText(mOrder.get(position).getRepairTime().toString());
         clientName.setText(mOrder.get(position).getClientName());
         contactName.setText(mOrder.get(position).getContactName());
         equipmentName.setText(mOrder.get(position).getDeviceName());
         String status = "";
         switch (mOrder.get(position).getStatus()){
-            case 0:
+            case 1:
                 status = "未签收";
                 break;
-            case 1:
+            case 2:
                 status = "待签到";
                 break;
-            case 2:
+            case 3:
                 status = "未完工";
                 break;
-            case 3:
+            case 4:
                 status = "待评价";
                 break;
-            case 4:
+            case 5:
                 status = "已完成";
                 break;
         }
         orderStatus.setText(status);
         // TODO: 2018/9/26 点击按钮转到响应订单的详情页面
+        // TODO: 2018/9/28 添加新的 
+        orderDetailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = null;
+                switch (mOrder.get(position).getStatus()){
+                    case 1:
+                        intent = new Intent(mContext, UnSignedOrderDetailActivity.class);
+                        GlobalVariablies.orderStatus = 1;
+                        break;
+                    case 2:
+                        intent = new Intent(mContext, UnchekinOrderDetailActivity.class);
+                        GlobalVariablies.orderStatus = 2;
+                        break;
+                    case 3:
+                        intent = new Intent(mContext, UnfinishedOrderDetailActivity.class);
+                        GlobalVariablies.orderStatus = 3;
+                        break;
+                    case 4:
+                        intent = new Intent(mContext, UncommentOrderDetailActivity.class);
+                        GlobalVariablies.orderStatus = 4;
+                        break;
+                    case 5:
+                        intent = new Intent(mContext, FinishedOrderDetailActivity.class);
+                        GlobalVariablies.orderStatus = 5;
+                        break;
+                }
+                GlobalVariablies.orderPosition = position;
+                mContext.startActivity(intent);
 
+            }
+        });
 
 
         return convertView;

@@ -54,6 +54,8 @@ public class MyInformationFragment extends Fragment {
                     // TODO: 2018/9/24 跳转到设置界面
                     Intent intent5 = new Intent(getActivity(), SettingActivity.class);
                     startActivity(intent5);
+
+
                     break;
             }
         }

@@ -41,20 +41,9 @@ public class UncommentOrderFragment extends Fragment {
         // 渲染这个页面布局
         //获得当前Fragment的上下文环境
         mContext = this.getActivity();
-        list_uncomment_order = view.findViewById(R.id.unsigned_order_list);
+        list_uncomment_order = view.findViewById(R.id.uncomment_order_list);
         // TODO: 2018/9/24 用户登录后获取其订单列表，声明一个公共变量存储，在这里修改适配器初始化为那个公共的变量
-        mUnCommentOrder = new LinkedList<Order>();
-        mUnCommentOrder.add(new Order("123da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("124da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("125da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("126da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("123da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("124da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("125da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnCommentOrder.add(new Order("126da", new Date(), "zhang", "guan", "Devices", 2));
-
-        //   mAdapter = new OrderAdapter(GlobalVariablies.unSignedInOrder, mContext);
-        mAdapter = new OrderAdapter((LinkedList<Order>) mUnCommentOrder, mContext);
+        mAdapter = new OrderAdapter(GlobalVariablies.unSignedInOrder, mContext);
         list_uncomment_order.setAdapter(mAdapter);
 
 

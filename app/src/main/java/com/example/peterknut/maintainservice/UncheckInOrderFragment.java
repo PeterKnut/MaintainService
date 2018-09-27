@@ -40,21 +40,8 @@ public class UncheckInOrderFragment extends Fragment {
         mContext = this.getActivity();
         list_uncheckin_order = view.findViewById(R.id.uncheck_order_list);
         // TODO: 2018/9/24 用户登录后获取其订单列表，声明一个公共变量存储，在这里修改适配器初始化为那个公共的变量
-        mCheckinOrder = new LinkedList<Order>();
-        mCheckinOrder.add(new Order("123da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("124da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("125da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("126da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("123da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("124da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("125da", new Date(), "zhang", "guan", "Devices", 2));
-        mCheckinOrder.add(new Order("126da", new Date(), "zhang", "guan", "Devices", 2));
-
-        //mAdapter = new OrderAdapter(GlobalVariablies.unCheckInOrder, mContext);
-        mAdapter = new OrderAdapter((LinkedList<Order>) mCheckinOrder, mContext);
+        mAdapter = new OrderAdapter(GlobalVariablies.unCheckInOrder, mContext);
         list_uncheckin_order.setAdapter(mAdapter);
-
-
         return view;
     }
 

@@ -17,8 +17,6 @@ import java.util.List;
 public class UnSignedOrderFragment extends Fragment {
 
 
-    //存储所有的订单
-    private List<Order> mUnsignedOrder = null;
     //当前上下文环境
     private Context mContext;
     //订单适配器
@@ -40,20 +38,9 @@ public class UnSignedOrderFragment extends Fragment {
         mContext = this.getActivity();
         list_unsigned_order = view.findViewById(R.id.unsigned_order_list);
         // TODO: 2018/9/24 用户登录后获取其订单列表，声明一个公共变量存储，在这里修改适配器初始化为那个公共的变量
-        mUnsignedOrder = new LinkedList<Order>();
-        mUnsignedOrder.add(new Order("123da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("124da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("125da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("126da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("123da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("124da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("125da", new Date(), "zhang", "guan", "Devices", 2));
-        mUnsignedOrder.add(new Order("126da", new Date(), "zhang", "guan", "Devices", 2));
 
-     //   mAdapter = new OrderAdapter(GlobalVariablies.unSignedInOrder, mContext);
-        mAdapter = new OrderAdapter((LinkedList<Order>) mUnsignedOrder, mContext);
+        mAdapter = new OrderAdapter(GlobalVariablies.unSignedInOrder, mContext);
         list_unsigned_order.setAdapter(mAdapter);
-
 
         return view;
     }

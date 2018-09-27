@@ -12,9 +12,9 @@ public class GlobalVariablies {
     //获取用户详细信息地址
     public static final String GET_USER_DETAIL_URL = "http://192.168.2.100/sys/user/getUserDetail";
     //获取用户所有订单
-    public static final String GET_ORDER_URL = "http://192.168.2.100/as/orderView/list?limit=10&offset=0";
+    public static final String GET_ORDER_URL = "http://192.168.2.100/as/orderView/mylist?limit=10&offset=0";
     //存储当前用户所有工单
-    public static LinkedList<Order> allWorkOrder = new LinkedList<>();
+    public static LinkedList<Order> allWorkOrder = new LinkedList<>() ;
     //存储当前用户待签收工单
     public static LinkedList<Order> unSignedInOrder = new LinkedList<>();
     //存储当前用户待签到工单
@@ -25,6 +25,15 @@ public class GlobalVariablies {
     public static LinkedList<Order> unCommentOrder = new LinkedList<>();
     //存储当前用户已完成工单
     public static LinkedList<Order> finishedOrder = new LinkedList<>();
+    //存储故障库
+    public static LinkedList<Fault> faultLinkedList = new LinkedList<>();
+
+
+    //记录当前查看的工单在列表中的编号
+    public static int orderPosition;
+    //记录当前查看的工单的状态(1, 待签收；2， 待签到； 3， 待完成； 4， 未评价； 5， 已完成)
+    public static int orderStatus;
+
 
     //保存登陆之后的用户信息
     public static User user;
