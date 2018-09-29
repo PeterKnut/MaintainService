@@ -1,11 +1,13 @@
 package com.example.peterknut.maintainservice;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -40,19 +42,29 @@ public class FaultAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(mContext).inflate(R.layout.item_list_fault,parent,false);
 
-        TextView faultPhenomenonTextView = convertView.findViewById(R.id.faultPhenomenonTextView);
+        TextView faultPhenomenonTextView = convertView.findViewById(R.id.phenomenonTextView);
         TextView faultTypeTextView = convertView.findViewById(R.id.faultTypeTextView);
-        Button detailButton = convertView.findViewById(R.id.detailButton);
+        TextView faultIdTextView = convertView.findViewById(R.id.faultIdTextView);
+        TableLayout tableLayout = convertView.findViewById(R.id.viewDetail);
 
+
+        faultIdTextView.setText(String.valueOf(mFault.get(position).getFaultId()));
         faultPhenomenonTextView.setText(mFault.get(position).getPhenomenon());
-        //服务器定义的是long类型
         // TODO: 2018/9/27 根据故障类型编号，设置对应为文本信息 
-        faultTypeTextView.setText(mFault.get(position).getPhenomenon());
-        // TODO: 2018/9/27 点击查看详情按钮跳转到详情页面
+        faultTypeTextView.setText(String.valueOf(mFault.get(position).getFaultTypeId()));
 
+
+        tableLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,FaultDetailActivity.class);
+                mContext.startActivity(intent);
+                GlobalVariablies.faultPosition = position;
+            }
+        });
 
         return convertView;
     }

@@ -10,8 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_infromation_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         app:title=" ">
@@ -22,67 +21,159 @@
             android:text="个人信息"
             android:textColor="@color/white"/>
     </android.support.v7.widget.Toolbar>
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
         android:orientation="vertical"
+        android:divider="@drawable/table_v_divider"
+        android:showDividers="end|beginning|middle"
+        android:background="@drawable/button_style"
         >
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/myPhotoButton"
-            android:text="头像"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:background="@drawable/button_style"
-            android:drawablePadding="20dp"
-            android:paddingBottom="10dp"
-            android:lineSpacingMultiplier="1.2"
+        <TableRow
+
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="头像"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myPhotoTextView"
+                android:text="张帅鹏"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+        <TableRow
+
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户名"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myNameTextView"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+        <TableRow
+
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
             />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/myNameButton"
-            android:text="姓名"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:background="@drawable/button_style"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/myIdNumberButton"
-            android:text="员工编号"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:background="@drawable/button_style"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/myScoreButton"
-            android:text="综合评价"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:background="@drawable/button_style"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/myPhoneNumberButton"
-            android:text="联系电话"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:background="@drawable/button_style"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/myAddressButton"
-            android:text="地址"
-            android:textAlignment="textStart"
-            android:layout_gravity="start"
-            android:background="@drawable/button_style"
-            />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myUserNameTextView"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+        <!-- 员工编号 -->
+        <TableRow
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="员工编号"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:id="@+id/myIdTextView"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+        <!-- 综合评价 -->
+        <TableRow
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的邮箱"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myEmailTextView"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+        <!-- 联系电话 -->
+        <TableRow
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系电话"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myPhoneTextView"
+                android:text="张帅鹏"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+        <!-- 地址 -->
+        <TableRow
+            android:padding="@dimen/tablerow">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址"
+                android:textSize="@dimen/text_content"
+                android:textAlignment="textStart"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myAddressTextView"
+                android:text="张帅鹏"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                />
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>

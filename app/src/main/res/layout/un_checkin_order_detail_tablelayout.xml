@@ -24,6 +24,27 @@
             android:id="@+id/orderIdTextView"
             />
     </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="设备编号"
+            android:textSize="@dimen/text_content" />
+
+        <TextView
+            android:id="@+id/deviceIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
     <TableRow
         android:layout_marginBottom="10dp"
         android:padding="@dimen/tablerow">
@@ -42,6 +63,26 @@
             />
     </TableRow>
     <!-- 预计开始时间 -->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="设备名称"
+            android:textSize="@dimen/text_content" />
+
+        <TextView
+            android:id="@+id/deviceNameorderIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
     <TableRow
         android:layout_marginBottom="10dp"
         android:padding="@dimen/tablerow">
@@ -97,21 +138,41 @@
     </TableRow>
     <!-- 联系人 -->
     <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
         android:padding="@dimen/tablerow">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_contact_name"
-            android:textSize="@dimen/text_content"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            />
+            android:layout_marginRight="10dp"
+            android:text="客户备注"
+            android:textSize="@dimen/text_content" />
+
         <TextView
-            android:layout_height="wrap_content"
+            android:id="@+id/clientNoteView"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/title_contact_name"
+            android:textSize="@dimen/text_content" />
+
+        <TextView
             android:id="@+id/contactNameTextView"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </TableRow>
     <!-- 联系电话 -->
     <TableRow
@@ -132,41 +193,7 @@
             />
     </TableRow>
     <!-- 设备编号 -->
-    <TableRow
-        android:layout_marginBottom="10dp"
-        android:padding="@dimen/tablerow">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="设备编号"
-            android:textSize="@dimen/text_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/deviceIdTextView"
-            />
-    </TableRow>
     <!-- 设备名称 -->
-    <TableRow
-        android:layout_marginBottom="10dp"
-        android:padding="@dimen/tablerow">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="设备名称"
-            android:textSize="@dimen/text_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/deviceNameorderIdTextView"
-            />
-    </TableRow>
     <!-- 订单状态 -->
     <TableRow
         android:layout_marginBottom="10dp"
@@ -222,23 +249,6 @@
             />
     </TableRow>
     <!-- 客户备注 -->
-    <TableRow
-        android:layout_marginBottom="10dp"
-        android:padding="@dimen/tablerow">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="客户备注"
-            android:textSize="@dimen/text_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/clientNoteView"
-            />
-    </TableRow>
     <!-- 签收备注 -->
     <TableRow
         android:layout_marginBottom="10dp"
@@ -271,8 +281,8 @@
             />
         <ImageView
             android:id="@+id/imageDescribe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
     </TableRow>
     <!-- 视频描述 -->
     <TableRow
@@ -285,6 +295,11 @@
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
+        <VideoView
+            android:id="@+id/videoDescriptionVideo"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            />
     </TableRow>
     <!-- 预计开始时间 -->
    <TableRow
@@ -297,12 +312,12 @@
            android:textSize="@dimen/text_content"
            android:layout_marginRight="10dp"
            android:layout_marginLeft="10dp"/>
+
        <EditText
-           android:layout_height="wrap_content"
-           android:layout_width="wrap_content"
            android:id="@+id/videoDiagnoseNoteEditText"
-           android:inputType="textMultiLine"
-           />
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:inputType="textMultiLine" />
    </TableRow>
 
     <!-- 签收按钮 -->
@@ -319,6 +334,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/remoteDiagnoseButton"
             android:text="远程诊断"/>
+    </TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

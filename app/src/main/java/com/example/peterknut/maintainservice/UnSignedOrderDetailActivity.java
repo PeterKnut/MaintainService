@@ -2,6 +2,7 @@ package com.example.peterknut.maintainservice;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
@@ -46,6 +48,7 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
     private TextView clientNoteTExtView;
     private ImageView imageDescriptionImageView;
     private EditText acceptNoteEditText;
+    private VideoView videoView;
 
     private Button cancelSignButton;
     private Button commitSignButton;
@@ -78,6 +81,8 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
         clientNoteTExtView = findViewById(R.id.clientNoteTextView);
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteEditText = findViewById(R.id.acceptRemarksEditText);
+        videoView = findViewById(R.id.videoDescriptionVideo);
+        videoView.setVideoURI(Uri.parse(GlobalVariablies.GET_Video_URL1));
         getImage();
 
         orderIdTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getOrderId());
@@ -95,7 +100,6 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
         faultDescriptionTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getFaultDescription());
         // TODO: 2018/9/28 设置客户备注 
         //        clientNoteTExtView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRemarks());
-        // TODO: 2018/9/28 设置图片描述
 
 
         cancelSignButton = findViewById(R.id.unsignedButton);
@@ -109,6 +113,13 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        videoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                videoView.start();
             }
         });
         // TODO: 2018/9/28 取消工单，并把该工单返回给服务器
@@ -175,7 +186,7 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
 
     private void getImage(){
         OkHttpUtils.get()
-                .url(GlobalVariablies.GET_IMAGE_URL)
+                .url(GlobalVariablies.GET_IMAGE_URL1)
                 .build()
                 .execute(new BitmapCallback() {
                     @Override

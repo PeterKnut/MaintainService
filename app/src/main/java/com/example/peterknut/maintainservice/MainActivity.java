@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private WorkListFragment workListFragment;
     private KnowledgeBaseFragment knowledgeBaseFragment;
-    private AddNewOrderFragment addNewOrderFragment;
+//    private AddNewOrderFragment addNewOrderFragment;
     private MyInformationFragment myInformationFragment;
 
 
@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_work_list:
                     switchFragment(workListFragment);
                     return true;
-                case R.id.navigation_add_work_order:
-                    switchFragment(addNewOrderFragment);
-                    return true;
+//                case R.id.navigation_add_work_order:
+//                    switchFragment(addNewOrderFragment);
+//                    return true;
                 case R.id.navigation_knowledge_base:
                     switchFragment(knowledgeBaseFragment);
                     return true;
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         workListFragment = new WorkListFragment();
         knowledgeBaseFragment = new KnowledgeBaseFragment();
         myInformationFragment = new MyInformationFragment();
-        addNewOrderFragment = new AddNewOrderFragment();
+ //       addNewOrderFragment = new AddNewOrderFragment();
 
         currentFragment = workListFragment;
 

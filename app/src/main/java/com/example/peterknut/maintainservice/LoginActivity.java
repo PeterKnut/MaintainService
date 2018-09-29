@@ -151,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                         initUser();
                         initOrder();
                         initFault();
+                        initDocument();
                         gotoMainActivity();
 
                     }else{
@@ -247,9 +248,58 @@ public class LoginActivity extends AppCompatActivity {
 
 
     //从服务器获取故障库内容并对其初始化
-    // TODO: 2018/9/27 从服务器获取故障类型 
     private void initFault(){
-        
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_FAULT_URL)
+                .addParams("limit","10")
+                .addParams("offset","0")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String jsonStr = jsonObject.getString("rows");
+                            GlobalVariablies.faultLinkedList = new LinkedList<>(JSON.parseArray(jsonStr,Fault.class));
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    //从服务器获取文献内容
+    private void initDocument(){
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_DOCUMENT_RUL)
+                .addParams("limit","10")
+                .addParams("offset","0")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String jsonStr = jsonObject.getString("rows");
+                            GlobalVariablies.documentLinkedList = new LinkedList<>(JSON.parseArray(jsonStr,Document.class));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
     private void gotoMainActivity(){

@@ -411,8 +411,8 @@
             />
         <ImageView
             android:id="@+id/imageDescribe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
     </TableRow>
     <!-- 视频描述 -->
     <TableRow
@@ -425,6 +425,10 @@
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
+        <VideoView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/videoDescriptionVideo"/>
     </TableRow>
 
 </TableLayout>

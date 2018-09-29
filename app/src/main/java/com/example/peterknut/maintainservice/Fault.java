@@ -24,15 +24,31 @@ public class Fault {
         this.phenomenon = phenomenon;
     }
 
+    public Fault(Integer faultId, Long deviceTypeId, String deviceSpecification, int faultTypeId, String phenomenon, String reason, String solution, String remark) {
+        this.faultId = faultId;
+        this.deviceTypeId = deviceTypeId;
+        this.deviceSpecification = deviceSpecification;
+        this.faultTypeId = faultTypeId;
+        this.phenomenon = phenomenon;
+        this.reason = reason;
+        this.solution = solution;
+        this.remark = remark;
+    }
+
     /**
          * 设置：
          */
         public void setFaultId(Integer faultId) {
             this.faultId = faultId;
         }
-        /**
+
+    public Fault() {
+    }
+
+    /**
          * 获取：
          */
+
         public Integer getFaultId() {
             return faultId;
         }

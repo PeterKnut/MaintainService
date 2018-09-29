@@ -36,27 +36,7 @@ public class FaultLibraryFragment extends Fragment {
         list_fault = view.findViewById(R.id.fault_list);
         mContext = this.getActivity();
 
-
-        mFault = new LinkedList<Fault>();
-        mFault.add(new Fault(1,"先抢"));
-        mFault.add(new Fault(2,"先抢"));
-        mFault.add(new Fault(3,"先抢"));
-        mFault.add(new Fault(4,"先抢"));
-        mFault.add(new Fault(15,"先抢"));
-        mFault.add(new Fault(6,"先抢"));
-        mFault.add(new Fault(7,"先抢"));
-        mFault.add(new Fault(8,"先抢"));
-        mFault.add(new Fault(9,"先抢"));
-        mFault.add(new Fault(10,"先抢"));
-        mFault.add(new Fault(11,"先抢"));
-        mFault.add(new Fault(12,"先抢"));
-        mFault.add(new Fault(13,"先抢"));
-        mFault.add(new Fault(14,"先抢"));
-        mFault.add(new Fault(15,"先抢"));
-        mFault.add(new Fault(16,"先抢"));
-
-   //     mAdapter = new FaultAdapter(GlobalVariablies.faultLinkedList, mContext);
-        mAdapter = new FaultAdapter((LinkedList<Fault>) mFault,mContext);
+        mAdapter = new FaultAdapter(GlobalVariablies.faultLinkedList, mContext);
         list_fault.setAdapter(mAdapter);
 
         return view;

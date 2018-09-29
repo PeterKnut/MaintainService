@@ -12,4 +12,12 @@
         <item>EQ3</item>
         <item>EQ4</item>
     </string-array>
+    <string-array name="account">
+        <item>test</item>
+        <item>guest123</item>
+        <item>webrtc98</item>
+        <item>admin</item>
+        <item>1234</item>
+        <item>rosaugo123</item>
+    </string-array>
 </resources>

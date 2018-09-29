@@ -1,30 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<TableLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@color/white"
+android:id="@+id/viewDetail"
+    >
+<TableRow
+    android:layout_marginBottom="10dp">
     <TextView
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="故障现象"
+        android:layout_width="match_parent"
+        android:id="@+id/faultIdTextView"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_title"
+        android:layout_span="2"
         />
+</TableRow>
+<TableRow
+    android:layout_marginBottom="10dp">
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/faultPhenomenonTextView"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="故障类型"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/faultTypeTextView"/>
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/detailButton"
-        android:text="查看详情"/>
+        android:text="故障现象"
+        android:textSize="@dimen/text_content"
+        android:layout_marginRight="5dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phenomenonTextView"
+        android:textSize="@dimen/text_content"/>
+</TableRow>
 
-</LinearLayout>
+<TableRow
+    android:layout_marginBottom="10dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:text="故障类型"
+        android:textSize="@dimen/text_content"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/faultTypeTextView"
+        android:textSize="@dimen/text_content"
+        />
+</TableRow>
+
+
+
+
+
+
+</TableLayout>

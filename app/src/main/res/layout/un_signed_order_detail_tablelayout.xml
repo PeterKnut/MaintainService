@@ -251,8 +251,8 @@
             />
         <ImageView
             android:id="@+id/imageDescribe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
     </TableRow>
     <!-- 视频描述 -->
     <TableRow
@@ -265,25 +265,13 @@
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
-    </TableRow>
-    <!-- 预计开始时间 -->
-    <TableRow
-        android:layout_marginBottom="10dp"
-        android:padding="@dimen/tablerow">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="预计开始时间:"
-            android:textSize="@dimen/text_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+        <VideoView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/videoDescriptionVideo"
             />
-        <TimePicker
-            android:timePickerMode="spinner"
-            >
-
-        </TimePicker>
     </TableRow>
+
     <!-- 签收备注 -->
     <TableRow
         android:layout_marginBottom="10dp"

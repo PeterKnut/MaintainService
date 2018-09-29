@@ -1,15 +1,21 @@
 package com.example.peterknut.maintainservice;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -25,6 +31,7 @@ import okhttp3.Call;
 import okhttp3.MediaType;
 
 public class UnchekinOrderDetailActivity extends AppCompatActivity {
+
 
     private Toolbar mToolbar;
     private TextView orderIdTextView;
@@ -43,6 +50,8 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
     private TextView acceptNoteTextView;
     private ImageView imageDescriptionImageView;
     private EditText videoDiagnoseNoteEditText;
+    private VideoView videoView;
+
 
     private Button checkInButton;
     private Button cancelSignButton;
@@ -79,7 +88,8 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteView);
         videoDiagnoseNoteEditText = findViewById(R.id.videoDiagnoseNoteEditText);
-   //     getImage();
+        videoView = findViewById(R.id.videoDescriptionVideo);
+        getImage();
 
 
         orderIdTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId());
@@ -100,6 +110,14 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         acceptNoteTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getAcceptRemark());
 
 
+
+        //设置视频路径
+        videoView.setVideoURI(Uri.parse(GlobalVariablies.GET_Video_URL1));
+
+
+
+
+
         checkInButton = findViewById(R.id.checkinButton);
         remoteDiagnoseButton = findViewById(R.id.remoteDiagnoseButton);
         cancelSignButton = findViewById(R.id.unsignedButton);
@@ -114,6 +132,15 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        videoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                videoView.start();
+            }
+        });
+
+
         //  将工单改为待签收状态，添加到待签收工单列表从待签到工单列表中移除
         cancelSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,13 +220,13 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
                 GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setStatus(3);
                 GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setCheckin(true);
                 // TODO: 2018/9/29 更新其视频诊断备注
-        //        GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setSigninRemark(videoDiagnoseNoteEditText.getText());
+               GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setSiginRemark(videoDiagnoseNoteEditText.getText().toString());
                 //上传到服务器
                 OkHttpUtils.post()
                         .url(GlobalVariablies.UPDATE_ORDER_URL)
                         .addParams("orderId", GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId())
                         // TODO: 2018/9/29  上传签到时间和签到备注（远程视频诊断备注）
-  //                      .addParams("siginRemark",GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getSiginRemark())
+                        .addParams("siginRemark",GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getSiginRemark())
    //                     .addParams("signinTime", String.valueOf(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getSigninTime()))
                         .addParams("status","3")
                         .build()
@@ -231,7 +258,8 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 2018/9/29 远程视频通信
-
+          //      Intent intent = new Intent(UnchekinOrderDetailActivity.this, VideoCall.class);
+          //      startActivity(intent);
 
 
 
@@ -242,6 +270,8 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         finishedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setSiginRemark(videoDiagnoseNoteEditText.getText().toString());
+
                 OkHttpUtils.post()
                         .url(GlobalVariablies.UPDATE_ORDER_URL)
                         .addParams("orderId",GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId())
@@ -276,8 +306,31 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
 
     //获取图像
     private void getImage(){
+//        OkHttpUtils.get()
+//                .url(GlobalVariablies.GET_IMAGE_URL)
+//                .addParams("limit","3")
+//                .addParams("offset","0")
+//                .addParams("refrenceid",GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId())
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String response, int id) {
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+
         OkHttpUtils.get()
-                .url(GlobalVariablies.GET_IMAGE_URL)
+                .url(GlobalVariablies.GET_IMAGE_URL2)
                 .build()
                 .execute(new BitmapCallback() {
                     @Override
@@ -288,8 +341,11 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Bitmap response, int id) {
                         imageDescriptionImageView.setImageBitmap(response);
+
+
                     }
                 });
+
     }
 
 }

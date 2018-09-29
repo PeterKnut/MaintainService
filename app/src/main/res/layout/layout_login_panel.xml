@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <ImageView
+        android:id="@+id/panel_ctrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button_style" />
+
+    <LinearLayout
+        android:id="@+id/login_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/UIBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/panel_account_text"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:popupBackground="#fff"
+            android:spinnerMode="dropdown" />
+
+
+        <Button
+            android:id="@+id/panel_login_btn"
+            android:layout_width="108dp"
+            android:layout_height="50dp"
+            android:text="登录" />
+
+        <TextView
+            android:id="@+id/panel_login_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="未登录"
+            android:textColor="#f00" />
+    </LinearLayout>
+
+
+</LinearLayout>

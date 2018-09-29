@@ -2,6 +2,7 @@ package com.example.peterknut.maintainservice;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.BitmapCallback;
@@ -37,6 +39,7 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
     private TextView acceptNoteTextView;
     private ImageView imageDescriptionImageView;
     private TextView videoDiagnoseTextView;
+    private VideoView videoView;
 
     private Button cancelCheckinButton;
     private Button finishedButton;
@@ -70,7 +73,9 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteTextView);
         videoDiagnoseTextView = findViewById(R.id.videoDiagnoseTextView);
-     //   getImage();
+        videoView = findViewById(R.id.videoDescriptionVideo);
+        videoView.setVideoURI(Uri.parse(GlobalVariablies.GET_Video_URL1));
+        getImage();
 
         orderIdTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getOrderId());
         repairTimeTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
@@ -117,7 +122,13 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-        
+
+        videoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                videoView.start();
+            }
+        });
         //确认完工 
         finishedButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +204,7 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
     //获取图像
     private void getImage(){
         OkHttpUtils.get()
-                .url(GlobalVariablies.GET_IMAGE_URL)
+                .url(GlobalVariablies.GET_IMAGE_URL1)
                 .build()
                 .execute(new BitmapCallback() {
                     @Override

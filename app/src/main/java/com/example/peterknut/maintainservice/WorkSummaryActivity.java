@@ -70,6 +70,7 @@ public class WorkSummaryActivity extends AppCompatActivity {
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteTextView);
         videoDiagnoseTextView = findViewById(R.id.videoDiagnoseTextView);
+        workSummaryEditText = findViewById(R.id.workSummaryEditText);
 
         submitButton = findViewById(R.id.submitButton);
         cancelButton = findViewById(R.id.cancelButton);
