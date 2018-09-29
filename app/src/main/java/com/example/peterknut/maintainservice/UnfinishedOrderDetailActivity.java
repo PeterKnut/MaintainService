@@ -65,7 +65,7 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
         contactNameTextView = findViewById(R.id.contactNameTextView);
         contactPhoneTextView = findViewById(R.id.contactPhoneTextView);
         deviceIdTextView = findViewById(R.id.deviceIdTextView);
-        deviceNameTextView = findViewById(R.id.deviceNameorderIdTextView);
+        deviceNameTextView = findViewById(R.id.deviceNameTextView);
         orderStatusTextView = findViewById(R.id.orderStatusTextView);
         faultTypeTextView = findViewById(R.id.faultTypeTextView);
         faultDescriptionTextView = findViewById(R.id.faultDescriptionTextView);
@@ -78,20 +78,20 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
         getImage();
 
         orderIdTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getOrderId());
-        repairTimeTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
-        expectedStartTimeTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime().toString());
+        repairTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRepairTime()));
+        expectedStartTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime()));
         clientNameTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getClientName());
         clientAddressTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRepairAddress());
         contactNameTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getContactName());
         contactPhoneTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getContactMobile());
         deviceIdTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getDeviceId().toString());
         // TODO: 2018/9/28 设置设备名
-//              deviceNameTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getDeviceName());
+        deviceNameTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getDeviceName());
         orderStatusTextView.setText("未完工");
         faultTypeTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getFaultTypeName());
         faultDescriptionTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getFaultDescription());
         // TODO: 2018/9/28 设置客户备注
-        //        clientNoteTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRemarks());
+        clientNoteTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRemarks());
         acceptNoteTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getAcceptRemark());
         videoDiagnoseTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getSiginRemark());
         

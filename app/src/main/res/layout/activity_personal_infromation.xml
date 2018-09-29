@@ -12,14 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
-        app:title=" ">
+        android:background="@color/white"
+        app:title=" "
+        app:navigationIcon="@drawable/ic_back">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="个人信息"
-            android:textColor="@color/white"/>
+            android:textStyle="bold"/>
     </android.support.v7.widget.Toolbar>
     <TableLayout
         android:layout_width="match_parent"

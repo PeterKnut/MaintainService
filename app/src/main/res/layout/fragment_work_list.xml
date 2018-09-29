@@ -13,15 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         app:title=" "
-        app:navigationIcon="@drawable/ic_notifications_black_24dp">
+        app:navigationIcon="@drawable/ic_menu">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/title_work_list"
-            android:textColor="@color/white"/>
+            android:textStyle="bold"
+            />
     </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.DrawerLayout
@@ -46,37 +47,43 @@
                 android:id="@+id/allWorkOrderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_all_work_order" />
+                android:text="@string/title_all_work_order"
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:id="@+id/unSignedOrderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_unsigned_order" />
+                android:text="@string/title_unsigned_order"
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:id="@+id/unCheckOrderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_uncheck_order" />
+                android:text="@string/title_uncheck_order"
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:id="@+id/unFinishedOrderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_unfinished_order" />
+                android:text="@string/title_unfinished_order"
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:id="@+id/unCommentOrderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_uncomment_order" />
+                android:text="@string/title_uncomment_order"
+                android:background="@drawable/button_style"/>
 
             <Button
                 android:id="@+id/finishedOrderButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_finished_order" />
+                android:text="@string/title_finished_order"
+                android:background="@drawable/button_style"/>
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 

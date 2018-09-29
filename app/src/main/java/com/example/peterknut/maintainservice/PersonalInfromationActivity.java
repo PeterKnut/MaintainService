@@ -41,6 +41,8 @@ public class PersonalInfromationActivity extends AppCompatActivity {
     private TextView myUserNameTextView;
     private TextView myEmailTextView;
 
+    private Toolbar toolbar;
+
     //保存图像头片
     private Bitmap head;
     //sd路径
@@ -141,6 +143,7 @@ public class PersonalInfromationActivity extends AppCompatActivity {
         myPhoneTextView = findViewById(R.id.myPhoneTextView);
         myAddressTextView = findViewById(R.id.myAddressTextView);
         myUserNameTextView = findViewById(R.id.myUserNameTextView);
+        toolbar = findViewById(R.id.my_infromation_toolbar);
 
         myUserNameTextView.setText(GlobalVariablies.user.getUsername());
         myIdTextView.setText(String.valueOf(GlobalVariablies.user.getUserId()));
@@ -151,6 +154,12 @@ public class PersonalInfromationActivity extends AppCompatActivity {
 
         myPhoneTextView.setOnClickListener(myClickListener);
         myAddressTextView.setOnClickListener(myClickListener);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }

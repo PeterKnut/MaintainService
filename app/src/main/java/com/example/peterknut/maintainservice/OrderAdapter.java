@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 /**
@@ -60,8 +61,9 @@ public class OrderAdapter extends BaseAdapter {
         TextView orderStatus = convertView.findViewById(R.id.orderStatus);
         TableLayout viewDetail = convertView.findViewById(R.id.viewDetail);
 
+
         orderId.setText(mOrder.get(position).getOrderId());
-        repairTime.setText(mOrder.get(position).getRepairTime().toString());
+        repairTime.setText(GlobalVariablies.SDF.format(mOrder.get(position).getRepairTime()));
         clientName.setText(mOrder.get(position).getClientName());
         contactName.setText(mOrder.get(position).getContactName());
         equipmentName.setText(mOrder.get(position).getDeviceName());

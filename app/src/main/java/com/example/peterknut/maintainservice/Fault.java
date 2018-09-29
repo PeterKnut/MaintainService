@@ -18,13 +18,18 @@ public class Fault {
         private String solution;
         //备注
         private String remark;
+        //故障类型名
+        private String faultTypeName;
 
-    public Fault(int faultTypeId, String phenomenon) {
-        this.faultTypeId = faultTypeId;
-        this.phenomenon = phenomenon;
+    public String getFaultTypeName() {
+        return faultTypeName;
     }
 
-    public Fault(Integer faultId, Long deviceTypeId, String deviceSpecification, int faultTypeId, String phenomenon, String reason, String solution, String remark) {
+    public void setFaultTypeName(String faultTypeName) {
+        this.faultTypeName = faultTypeName;
+    }
+
+    public Fault(Integer faultId, Long deviceTypeId, String deviceSpecification, int faultTypeId, String phenomenon, String reason, String solution, String remark, String faultTypeName) {
         this.faultId = faultId;
         this.deviceTypeId = deviceTypeId;
         this.deviceSpecification = deviceSpecification;
@@ -33,6 +38,7 @@ public class Fault {
         this.reason = reason;
         this.solution = solution;
         this.remark = remark;
+        this.faultTypeName = faultTypeName;
     }
 
     /**

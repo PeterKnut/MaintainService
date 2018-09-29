@@ -74,11 +74,11 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
         contactNameTextView = findViewById(R.id.contactNameTextView);
         contactPhoneTextView = findViewById(R.id.contactPhoneTextView);
         deviceIdTextView = findViewById(R.id.deviceIdTextView);
-        deviceNameTextView = findViewById(R.id.deviceNameorderIdTextView);
+        deviceNameTextView = findViewById(R.id.deviceNameTextView);
         orderStatusTextView = findViewById(R.id.orderStatusTextView);
         faultTypeTextView = findViewById(R.id.faultTypeTextView);
         faultDescriptionTextView = findViewById(R.id.faultDescriptionTextView);
-        clientNoteTExtView = findViewById(R.id.clientNoteTextView);
+        clientNoteTExtView = findViewById(R.id.clientNoteView);
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteEditText = findViewById(R.id.acceptRemarksEditText);
         videoView = findViewById(R.id.videoDescriptionVideo);
@@ -86,20 +86,20 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
         getImage();
 
         orderIdTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getOrderId());
-        repairTimeTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
-        expectedStartTimeTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime().toString());
+        repairTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRepairTime()));
+        expectedStartTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime()));
         clientNameTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getClientName());
         clientAddressTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRepairAddress());
         contactNameTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getContactName());
         contactPhoneTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getContactMobile());
         deviceIdTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getDeviceId().toString());
         // TODO: 2018/9/28 设置设备名 
-        //      deviceNameTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getDeviceName());
+        deviceNameTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getDeviceName());
         orderStatusTextView.setText("待签收");
         faultTypeTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getFaultTypeName());
         faultDescriptionTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getFaultDescription());
-        // TODO: 2018/9/28 设置客户备注 
-        //        clientNoteTExtView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRemarks());
+        // TODO: 2018/9/28 设置客户备注
+        clientNoteTExtView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRemarks());
 
 
         cancelSignButton = findViewById(R.id.unsignedButton);

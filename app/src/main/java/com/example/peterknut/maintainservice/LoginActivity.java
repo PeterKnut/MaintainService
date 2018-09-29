@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
         OkHttpUtils.initClient(okHttpClient);
         //控件初始化
         initView();
-        attemptLogin();
+
     }
 
     private void initView(){

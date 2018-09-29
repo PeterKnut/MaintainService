@@ -1,5 +1,6 @@
 package com.example.peterknut.maintainservice;
 
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 import okhttp3.MediaType;
@@ -45,6 +46,9 @@ public class GlobalVariablies {
     public static LinkedList<Fault> faultLinkedList = new LinkedList<>();
     //存储文献库
     public static LinkedList<Document> documentLinkedList = new LinkedList<>();
+
+    //时间格式
+    public static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     //用户取消操作时返回的备注
     public static String remarks = "";

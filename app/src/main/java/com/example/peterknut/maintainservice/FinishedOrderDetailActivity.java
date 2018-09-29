@@ -59,7 +59,7 @@ public class FinishedOrderDetailActivity extends AppCompatActivity {
             contactNameTextView = findViewById(R.id.contactNameTextView);
             contactPhoneTextView = findViewById(R.id.contactPhoneTextView);
             deviceIdTextView = findViewById(R.id.deviceIdTextView);
-            deviceNameTextView = findViewById(R.id.deviceNameorderIdTextView);
+            deviceNameTextView = findViewById(R.id.deviceNameTextView);
             orderStatusTextView = findViewById(R.id.orderStatusTextView);
             faultTypeTextView = findViewById(R.id.faultTypeTextView);
             faultDescriptionTextView = findViewById(R.id.faultDescriptionTextView);
@@ -72,22 +72,22 @@ public class FinishedOrderDetailActivity extends AppCompatActivity {
             getImage();
 
             orderIdTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getOrderId());
-            repairTimeTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
-            expectedStartTimeTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime().toString());
+            repairTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getRepairTime()));
+            expectedStartTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime()));
             clientNameTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getClientName());
             clientAddressTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getRepairAddress());
             contactNameTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getContactName());
             contactPhoneTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getContactMobile());
             deviceIdTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getDeviceId().toString());
             // TODO: 2018/9/28 设置设备名
-//              deviceNameTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getDeviceName());
+            deviceNameTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getDeviceName());
             orderStatusTextView.setText("未评价");
             faultTypeTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getFaultTypeName());
             faultDescriptionTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getFaultDescription());
             // TODO: 2018/9/28 设置客户备注
-            //        clientNoteTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getRemarks());
+            clientNoteTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getRemarks());
             acceptNoteTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getAcceptRemark());
-//        videoDiagnoseTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getSiginRemark());
+            videoDiagnoseTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getSiginRemark());
         }
         private void initListener(){
             mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

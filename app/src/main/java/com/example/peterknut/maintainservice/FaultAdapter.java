@@ -54,7 +54,7 @@ public class FaultAdapter extends BaseAdapter{
         faultIdTextView.setText(String.valueOf(mFault.get(position).getFaultId()));
         faultPhenomenonTextView.setText(mFault.get(position).getPhenomenon());
         // TODO: 2018/9/27 根据故障类型编号，设置对应为文本信息 
-        faultTypeTextView.setText(String.valueOf(mFault.get(position).getFaultTypeId()));
+        faultTypeTextView.setText(mFault.get(position).getFaultTypeName());
 
 
         tableLayout.setOnClickListener(new View.OnClickListener() {

@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:stretchColumns="*"
     android:divider="@drawable/table_v_divider"
-    android:showDividers="middle|beginning|end">>
+    android:showDividers="middle|beginning|end"
+    android:padding="10dp"
+    >
     <TableRow
         android:layout_marginBottom="10dp"
         android:padding="@dimen/tablerow">
@@ -20,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/orderIdTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <TableRow
@@ -37,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/repairTimeTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 预计开始时间 -->
@@ -55,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/expectedStartTimeTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 客户名称 -->
@@ -73,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/clientNameTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 地址 -->
@@ -91,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/clientAddressTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 联系人 -->
@@ -109,6 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/contactNameTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 联系电话 -->
@@ -127,6 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/contactPhoneTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 设备编号 -->
@@ -136,7 +145,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备编号"
+            android:text="设备编号:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -145,6 +154,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/deviceIdTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 设备名称 -->
@@ -154,7 +164,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备名称"
+            android:text="设备名称:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -162,7 +172,8 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/deviceNameorderIdTextView"
+            android:id="@+id/deviceNameTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 订单状态 -->
@@ -181,6 +192,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/orderStatusTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 故障类型 -->
@@ -190,7 +202,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="故障类型"
+            android:text="故障类型:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -199,6 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/faultTypeTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 故障描述 -->
@@ -217,6 +230,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/faultDescriptionTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 客户备注 -->
@@ -226,7 +240,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="客户备注"
+            android:text="客户备注:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -235,6 +249,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/clientNoteTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 签收备注 -->
@@ -244,7 +259,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="签收备注"
+            android:text="签收备注:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -253,6 +268,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/acceptNoteTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 签到备注 -->
@@ -262,7 +278,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="视频诊断备注"
+            android:text="视频诊断备注:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -271,6 +287,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/videoDiagnoseTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <!-- 图片描述 -->
@@ -280,7 +297,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="图片描述"
+            android:text="图片描述:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -297,13 +314,13 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="视频描述"
+            android:text="视频描述:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
         <VideoView
-            android:layout_height="300dp"
-            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_width="200dp"
             android:id="@+id/videoDescriptionVideo"/>
     </TableRow>
     <!-- 确认签到 -->
@@ -315,11 +332,13 @@
             android:layout_height="wrap_content"
             android:text="确认完工"
             android:id="@+id/finishedOrderButton"
+            android:background="@drawable/button_style"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="取消签到"
-            android:id="@+id/cancelCheckinButton"/>
+            android:id="@+id/cancelCheckinButton"
+            android:background="@drawable/button_style"/>
     </TableRow>
 </TableLayout>

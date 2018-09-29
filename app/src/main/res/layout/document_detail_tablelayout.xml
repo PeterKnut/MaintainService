@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="文献编号"
+            android:text="文献编号:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/documentIdTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <TableRow
@@ -30,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="资料类型"
+            android:text="资料类型:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/doctypeTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
 
@@ -48,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="标题"
+            android:text="标题:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -57,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/titleTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
     <TableRow
@@ -65,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="内容"
+            android:text="内容:"
             android:textSize="@dimen/text_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -74,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/contentTextView"
+            android:textSize="@dimen/text_content"
             />
     </TableRow>
 

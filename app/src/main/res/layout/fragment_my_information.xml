@@ -14,14 +14,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         app:title=" ">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/title_my_information"
-            android:textColor="@color/white"/>
+            android:textStyle="bold"
+            />
     </android.support.v7.widget.Toolbar>
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -49,8 +50,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/historyOrderButton"
             android:text="@string/title_my_history_order"
+            android:textAlignment="textStart"
             android:layout_marginBottom="0dp"
             android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_my_work_order1"
             android:background="@drawable/button_style"/>
         <Button
             android:layout_width="match_parent"

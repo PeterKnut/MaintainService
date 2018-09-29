@@ -80,11 +80,11 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         contactNameTextView = findViewById(R.id.contactNameTextView);
         contactPhoneTextView = findViewById(R.id.contactPhoneTextView);
         deviceIdTextView = findViewById(R.id.deviceIdTextView);
-        deviceNameTextView = findViewById(R.id.deviceNameorderIdTextView);
+        deviceNameTextView = findViewById(R.id.deviceNameTextView);
         orderStatusTextView = findViewById(R.id.orderStatusTextView);
         faultTypeTextView = findViewById(R.id.faultTypeTextView);
         faultDescriptionTextView = findViewById(R.id.faultDescriptionTextView);
-        clientNoteTextView = findViewById(R.id.clientNoteTextView);
+        clientNoteTextView = findViewById(R.id.clientNoteView);
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteView);
         videoDiagnoseNoteEditText = findViewById(R.id.videoDiagnoseNoteEditText);
@@ -93,20 +93,20 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
 
 
         orderIdTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId());
-        repairTimeTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
-        expectedStartTimeTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime().toString());
+        repairTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getRepairTime()));
+        expectedStartTimeTextView.setText(GlobalVariablies.SDF.format(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getEstimatedStartTime()));
         clientNameTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getClientName());
         clientAddressTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getRepairAddress());
         contactNameTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getContactName());
         contactPhoneTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getContactMobile());
         deviceIdTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getDeviceId().toString());
         // TODO: 2018/9/28 设置设备名
-        //      deviceNameTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getDeviceName());
+        deviceNameTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getDeviceName());
         orderStatusTextView.setText("待签收");
         faultTypeTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getFaultTypeName());
         faultDescriptionTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getFaultDescription());
         // TODO: 2018/9/28 设置客户备注
-        //        clientNoteTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getRemarks());
+        clientNoteTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getRemarks());
         acceptNoteTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getAcceptRemark());
 
 
@@ -185,7 +185,7 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
 //                sendnotifyDialog.show();
 
                 GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setStatus(1);
-                GlobalVariablies.unSignedInOrder.add(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition));
+                GlobalVariablies.unSignedInOrder.add(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition));
                 GlobalVariablies.unCheckInOrder.remove(GlobalVariablies.orderPosition);
 
                 GlobalVariablies.orderStatus = 1;
@@ -258,8 +258,9 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 2018/9/29 远程视频通信
-          //      Intent intent = new Intent(UnchekinOrderDetailActivity.this, VideoCall.class);
-          //      startActivity(intent);
+                Intent intent = new Intent(UnchekinOrderDetailActivity.this,JoinRoomActivity.class);
+                startActivity(intent);
+
 
 
 
@@ -294,7 +295,7 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
                 GlobalVariablies.unCheckInOrder.remove(GlobalVariablies.orderPosition);
 
                 GlobalVariablies.orderStatus = 4;
-                GlobalVariablies.orderPosition = GlobalVariablies.unCommentOrder.size();
+                GlobalVariablies.orderPosition = GlobalVariablies.unCommentOrder.size() - 1;
 
 
                 Intent intent = new Intent(UnchekinOrderDetailActivity.this, WorkSummaryActivity.class);

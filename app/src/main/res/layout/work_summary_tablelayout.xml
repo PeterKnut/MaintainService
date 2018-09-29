@@ -4,12 +4,19 @@
     android:layout_height="match_parent"
     android:stretchColumns="*"
     android:divider="@drawable/table_v_divider"
-    android:showDividers="middle">>
-    <TableRow>
+    android:showDividers="middle"
+    android:padding="10dp"
+    >
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_order_id"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -17,11 +24,16 @@
             android:id="@+id/orderIdTextView"
             />
     </TableRow>
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_repair_time"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -30,11 +42,16 @@
             />
     </TableRow>
     <!-- 预计开始时间 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_expected_start_time"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -43,11 +60,16 @@
             />
     </TableRow>
     <!-- 客户名称 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_client_name"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -56,11 +78,16 @@
             />
     </TableRow>
     <!-- 地址 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_client_address"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -69,11 +96,16 @@
             />
     </TableRow>
     <!-- 联系人 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_contact_name"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -82,11 +114,16 @@
             />
     </TableRow>
     <!-- 联系电话 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_contact_phone"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -95,11 +132,16 @@
             />
     </TableRow>
     <!-- 设备编号 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备编号"
+            android:text="设备编号:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -108,24 +150,34 @@
             />
     </TableRow>
     <!-- 设备名称 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备名称"
+            android:text="设备名称:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/deviceNameorderIdTextView"
+            android:id="@+id/deviceNameTextView"
             />
     </TableRow>
     <!-- 订单状态 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_order_status"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -134,11 +186,16 @@
             />
     </TableRow>
     <!-- 故障类型 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="故障类型"
+            android:text="故障类型:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -147,11 +204,16 @@
             />
     </TableRow>
     <!-- 故障描述 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_fault_description"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -160,11 +222,16 @@
             />
     </TableRow>
     <!-- 客户备注 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="客户备注"
+            android:text="客户备注:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -173,11 +240,16 @@
             />
     </TableRow>
     <!-- 签收备注 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="签收备注"
+            android:text="签收备注:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -186,11 +258,16 @@
             />
     </TableRow>
     <!-- 签到备注 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="签到备注"
+            android:text="签到备注:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -199,11 +276,16 @@
             />
     </TableRow>
     <!-- 维修开始时间 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="维修开始时间"
+            android:text="维修开始时间:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -212,11 +294,16 @@
             />
     </TableRow>
     <!-- 维修结束时间 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="维修结束时间"
+            android:text="维修结束时间:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -225,11 +312,16 @@
             />
     </TableRow>
     <!-- 维修工时 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="维修工时"
+            android:text="维修工时:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -238,11 +330,16 @@
             />
     </TableRow>
     <!-- 评价得分 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评价得分"
+            android:text="评价得分:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -251,11 +348,16 @@
             />
     </TableRow>
     <!-- 评价内容 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评价内容"
+            android:text="评价内容:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -264,11 +366,16 @@
             />
     </TableRow>
     <!-- 评价人 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评价人"
+            android:text="评价人:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -277,11 +384,16 @@
             />
     </TableRow>
     <!-- 评价时间 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评价时间"
+            android:text="评价时间:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <TextView
             android:layout_height="wrap_content"
@@ -290,11 +402,16 @@
             />
     </TableRow>
     <!-- 图片描述 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="图片描述"
+            android:text="图片描述:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <ImageView
             android:id="@+id/imageDescribe"
@@ -302,36 +419,49 @@
             android:layout_height="wrap_content"/>
     </TableRow>
     <!-- 视频描述 -->
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="视频描述"/>
+            android:text="视频描述:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
     </TableRow>
     <TableRow>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="维修总结"
+            android:text="维修总结:"
+            android:textSize="@dimen/text_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/workSummaryEditText"
             android:inputType="textMultiLine"
-            android:hint="请输入完工总结"/>
+            android:hint="请输入完工总结"
+            android:minHeight="100dp"/>
     </TableRow>
-    <TableRow>
+    <TableRow
+        android:layout_marginBottom="10dp"
+        android:padding="@dimen/tablerow">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="提交"
-            android:id="@+id/submitButton"/>
+            android:id="@+id/submitButton"
+            android:background="@drawable/button_style"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="取消"
-            android:id="@+id/cancelButton"/>
+            android:id="@+id/cancelButton"
+            android:background="@drawable/button_style"/>
     </TableRow>
 
 </TableLayout>

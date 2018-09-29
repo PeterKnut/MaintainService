@@ -3,16 +3,16 @@
 
     <item
         android:id="@+id/navigation_work_list"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_my_work_order"
         android:title="@string/title_work_list" />
 
     <item
         android:id="@+id/navigation_knowledge_base"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_knowledge1"
         android:title="@string/title_knowledge_base" />
     <item
         android:id="@+id/navigation_my_information"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_my_information"
         android:title="@string/title_my_information" />
 
 </menu>
