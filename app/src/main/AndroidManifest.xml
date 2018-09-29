@@ -55,7 +55,8 @@
         <activity android:name=".UnchekinOrderDetailActivity" />
         <activity android:name=".UnfinishedOrderDetailActivity" />
         <activity android:name=".UncommentOrderDetailActivity" />
-        <activity android:name=".FinishedOrderDetailActivity"></activity>
+        <activity android:name=".FinishedOrderDetailActivity" />
+        <activity android:name=".WorkSummaryActivity"></activity>
     </application>
 
 </manifest>

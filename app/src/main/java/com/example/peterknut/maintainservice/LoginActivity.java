@@ -88,14 +88,25 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //session 持久化
+        CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .cookieJar(cookieJar)
+                //其他配置
+                .build();
+
+        OkHttpUtils.initClient(okHttpClient);
+        //控件初始化
+        initView();
+        attemptLogin();
+    }
+
+    private void initView(){
         // 绑定控件并设置监听器
         mPhoneView = (AutoCompleteTextView) findViewById(R.id.phone);
-
-
         mPasswordView = (EditText) findViewById(R.id.passwordEditText);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-
             //回车相应处理
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
@@ -109,66 +120,17 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 attemptLogin();
-                if(isLegalUser) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
             }
-
         });
-
-
-
     }
 
     private void attemptLogin() {
 
-        //session 持久化
-        CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .cookieJar(cookieJar)
-                //其他配置
-                .build();
-
-        OkHttpUtils.initClient(okHttpClient);
-        // Reset errors.
-        mPhoneView.setError(null);
-        mPasswordView.setError(null);
-
         // 获取用户输入的用户名和登陆密码
         String username = mPhoneView.getText().toString();
         String password = mPasswordView.getText().toString();
-
-        boolean cancel = false;
-        View focusView = null;
-
-//        // 用户输入密码后，检测其格式是否正确
-//        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-//            mPasswordView.setError(getString(R.string.error_invalid_password));
-//            focusView = mPasswordView;
-//            cancel = true;
-//        }
-//
-//        // 检测输入手机号是否有效
-//        if (TextUtils.isEmpty(username)) {
-//            mPhoneView.setError(getString(R.string.error_field_required));
-//            focusView = mPhoneView;
-//            cancel = true;
-//        } else if (!isPhoneValid(username)) {
-//            mPhoneView.setError(getString(R.string.error_invalid_phone));
-//            focusView = mPhoneView;
-//            cancel = true;
-//        }
-
-        //判断用户身份是否合法
-        login(username, password);
-
-    }
-
-    private void login(String username, String password) {
 
         OkHttpUtils.post()
                 .url(GlobalVariablies.LOGIN_URL)
@@ -185,10 +147,11 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject json = new JSONObject(response);
                     if(json.getString("msg").equals("操作成功")){
-
                         // TODO: 2018/9/16 进行该用户个人信息初始化
-                        initGlobalVariables();
-                        isLegalUser = true;
+                        initUser();
+                        initOrder();
+                        initFault();
+                        gotoMainActivity();
 
                     }else{
                         // TODO: 2018/9/16 弹出一个提示框，提示手机号或者密码错误
@@ -203,137 +166,101 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     //从服务器获取用户的信息并对其进行初始化
     private void initUser(){
+               OkHttpUtils.get()
+                       .url(GlobalVariablies.GET_USER_DETAIL_URL)
+                       .build()
+                       .execute(new StringCallback() {
+                           @Override
+                           public void onError(Call call, Exception e, int id) {
+                               System.out.println(e.getMessage());
+                           }
 
-        OkHttpUtils.get()
-                .url(GlobalVariablies.GET_USER_DETAIL_URL)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        System.out.println(e.getMessage());
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        JSONObject json = null;
-                        try {
-                            json = new JSONObject(response);
-                            GlobalVariablies.user = new User(
-                                    json.getString("username"),
-                                    json.getString("name"),
-                                    json.getString("password"),
-                                    json.getString("mobile"),
-                                    json.getInt("status"),
-                                    json.getLong("sex"),
-                                    json.getString("liveAddress"),
-                                    json.getString("province"),
-                                    json.getString("city"),
-                                    json.getString("district")
-                            );
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-                });
-
-
+                           @Override
+                           public void onResponse(String response, int id) {
+                               JSONObject json = null;
+                               try {
+                                   json = new JSONObject(response);
+                                   GlobalVariablies.user = new User(
+                                           json.getString("username"),
+                                           json.getString("name"),
+                                           json.getString("password"),
+                                           json.getString("mobile"),
+                                           json.getInt("status"),
+                                           (long) 1,
+                                           // TODO: 2018/9/28 用户性别 
+ //                                          json.getLong("sex"),
+                                           json.getString("liveAddress"),
+                                           json.getString("province"),
+                                           json.getString("city"),
+                                           json.getString("district")
+                                   );
+                               } catch (JSONException e) {
+                                   e.printStackTrace();
+                               }
+                           }
+                       });
     }
 
     //从服务器获取用户的订单信息并对其进行初始化
     private void initOrder(){
-        OkHttpUtils.get()
-                .url(GlobalVariablies.GET_ORDER_URL)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-
-
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        try {
-                            JSONObject json = new JSONObject(response);
-                            String jsonArray = json.getString("rows");
-                            GlobalVariablies.allWorkOrder = new LinkedList<>(JSON.parseArray(jsonArray,Order.class));
-
-                            //初始化各状态工单
-                            for(int i =0; i<GlobalVariablies.allWorkOrder.size();i++){
-                                switch (GlobalVariablies.allWorkOrder.get(i).getStatus()){
-                                    case 1:
-                                        GlobalVariablies.unSignedInOrder.add(GlobalVariablies.allWorkOrder.get(i));
-                                        break;
-                                    case 2:
-                                        GlobalVariablies.unCheckInOrder.add(GlobalVariablies.allWorkOrder.get(i));
-                                        break;
-                                    case 3:
-                                        GlobalVariablies.unFinishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
-                                        break;
-                                    case 4:
-                                        GlobalVariablies.unCommentOrder.add(GlobalVariablies.allWorkOrder.get(i));
-                                        break;
-                                    case 5:
-                                        GlobalVariablies.finishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
-                                        break;
-
-                                }
-
-
+                OkHttpUtils.get()
+                        .url(GlobalVariablies.GET_ORDER_URL)
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
 
                             }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                            @Override
+                            public void onResponse(String response, int id) {
+                                try {
+                                    JSONObject json = new JSONObject(response);
+                                    String jsonArray = json.getString("rows");
+                                    GlobalVariablies.allWorkOrder = new LinkedList<>(JSON.parseArray(jsonArray,Order.class));
+
+                                    //初始化各状态工单
+                                    for(int i =0; i<GlobalVariablies.allWorkOrder.size();i++){
+                                        switch (GlobalVariablies.allWorkOrder.get(i).getStatus()){
+                                            case 1:
+                                                GlobalVariablies.unSignedInOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                                break;
+                                            case 2:
+                                                GlobalVariablies.unCheckInOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                                break;
+                                            case 3:
+                                                GlobalVariablies.unFinishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                                break;
+                                            case 4:
+                                                GlobalVariablies.unCommentOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                                break;
+                                            case 5:
+                                                GlobalVariablies.finishedOrder.add(GlobalVariablies.allWorkOrder.get(i));
+                                                break;
+                                        }
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
     }
-    
+
+
     //从服务器获取故障库内容并对其初始化
     // TODO: 2018/9/27 从服务器获取故障类型 
     private void initFault(){
         
     }
 
-    //判断输入的手机号是否有效
-    private boolean isPhoneValid(String phone) {
-        return phone.length() == 13;
-    }
-
-    //判断输入的密码是否符合格式（六个字母以上）
-    // TODO: 2018/9/18
-    private boolean isPasswordValid(String password) {
-        boolean containLowerCase = false;
-        boolean containUpperCase = false;
-        boolean containNumber = false;
-
-        for(int i=0;i<password.length();i++){
-            if(Character.isLowerCase(password.charAt(i))){
-                containLowerCase = true;
-            }else if(Character.isUpperCase(password.charAt(i))){
-                containUpperCase =  true;
-            }else if(Character.isDigit(password.charAt(i))){
-                containNumber = true;
-            }else{
-                return false;
-            }
-        }
-        return containLowerCase && containNumber && containUpperCase;
-    }
-
-
-    //登陆成功后进行全局变量初始化
-    // TODO: 2018/9/26 用户工单初始化，个人信息初始化
-    public void initGlobalVariables(){
-
-        initUser();
-        initOrder();
-
+    private void gotoMainActivity(){
+        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(intent);
     }
 
 

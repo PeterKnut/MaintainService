@@ -8,5 +8,8 @@
     <dimen name="textView_height">40dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_title">25dp</dimen>
+    <dimen name="text_content">20dp</dimen>
+    <dimen name="tablerow">5dp</dimen>
 
 </resources>

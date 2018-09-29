@@ -43,7 +43,7 @@ public class UncommentOrderFragment extends Fragment {
         mContext = this.getActivity();
         list_uncomment_order = view.findViewById(R.id.uncomment_order_list);
         // TODO: 2018/9/24 用户登录后获取其订单列表，声明一个公共变量存储，在这里修改适配器初始化为那个公共的变量
-        mAdapter = new OrderAdapter(GlobalVariablies.unSignedInOrder, mContext);
+        mAdapter = new OrderAdapter(GlobalVariablies.unCommentOrder, mContext);
         list_uncomment_order.setAdapter(mAdapter);
 
 

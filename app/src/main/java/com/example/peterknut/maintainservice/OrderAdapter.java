@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -57,35 +58,34 @@ public class OrderAdapter extends BaseAdapter {
         TextView contactName = convertView.findViewById(R.id.contactName);
         TextView equipmentName = convertView.findViewById(R.id.equipmentName);
         TextView orderStatus = convertView.findViewById(R.id.orderStatus);
-        Button orderDetailButton = convertView.findViewById(R.id.orderDetailButton);
+        TableLayout viewDetail = convertView.findViewById(R.id.viewDetail);
 
         orderId.setText(mOrder.get(position).getOrderId());
-  //      repairTime.setText(mOrder.get(position).getRepairTime().toString());
+        repairTime.setText(mOrder.get(position).getRepairTime().toString());
         clientName.setText(mOrder.get(position).getClientName());
         contactName.setText(mOrder.get(position).getContactName());
         equipmentName.setText(mOrder.get(position).getDeviceName());
         String status = "";
         switch (mOrder.get(position).getStatus()){
             case 1:
-                status = "未签收";
+                status = "待签收";
                 break;
             case 2:
                 status = "待签到";
                 break;
             case 3:
-                status = "未完工";
+                status = "待完工";
                 break;
             case 4:
-                status = "待评价";
+                status = "未评价";
                 break;
             case 5:
                 status = "已完成";
                 break;
         }
         orderStatus.setText(status);
-        // TODO: 2018/9/26 点击按钮转到响应订单的详情页面
-        // TODO: 2018/9/28 添加新的 
-        orderDetailButton.setOnClickListener(new View.OnClickListener() {
+
+        viewDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = null;
@@ -113,10 +113,8 @@ public class OrderAdapter extends BaseAdapter {
                 }
                 GlobalVariablies.orderPosition = position;
                 mContext.startActivity(intent);
-
             }
         });
-
 
         return convertView;
     }

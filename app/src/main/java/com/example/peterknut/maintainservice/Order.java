@@ -89,6 +89,16 @@ public class Order  {
     private String clientName;
     //故障名称
     private String faultTypeName;
+    // 是否签到
+    private boolean isCheckin = false;
+
+    public boolean isCheckin() {
+        return isCheckin;
+    }
+
+    public void setCheckin(boolean checkin) {
+        isCheckin = checkin;
+    }
 
     public Order() {
     }
@@ -474,7 +484,10 @@ public class Order  {
      * 获取：维修员
      */
     public Long getRepairUserId() {
-        return repairUserId;
+
+        if(repairId != null)
+             return repairUserId;
+        return null;
     }
     /**
      * 设置：错误类型
