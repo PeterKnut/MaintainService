@@ -1,11 +1,17 @@
 package com.example.peterknut.maintainservice;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.BitmapCallback;
+
+import okhttp3.Call;
 
 public class UncommentOrderDetailActivity extends AppCompatActivity {
 
@@ -61,6 +67,7 @@ public class UncommentOrderDetailActivity extends AppCompatActivity {
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteTextView);
         videoDiagnoseTextView = findViewById(R.id.videoDiagnoseTextView);
+        getImage();
 
         orderIdTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getOrderId());
         repairTimeTextView.setText(GlobalVariablies.unCommentOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
@@ -88,5 +95,23 @@ public class UncommentOrderDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    //获取图像
+    private void getImage(){
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_IMAGE_URL)
+                .build()
+                .execute(new BitmapCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Bitmap response, int id) {
+                        imageDescriptionImageView.setImageBitmap(response);
+                    }
+                });
     }
 }

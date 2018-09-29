@@ -15,8 +15,10 @@ public class GlobalVariablies {
     public static final String GET_ORDER_URL = "http://192.168.2.100/as/orderView/mylist?limit=10&offset=0";
     //对订单进行更新
     public static final String UPDATE_ORDER_URL = "http://192.168.2.100/as/orderView/update";
-    //Media类型
-    public static final String MEDIA_TYPE = "application/json; charset=utf-8";
+    //获取订单描述图片
+    public static final String GET_IMAGE_URL = "";
+    // 取消
+    public static final String NOTIFY_SAVE = "http://192.168.2.100/oa/notify/save";
     //存储当前用户所有工单
     public static LinkedList<Order> allWorkOrder = new LinkedList<>() ;
     //存储当前用户待签收工单
@@ -31,6 +33,8 @@ public class GlobalVariablies {
     public static LinkedList<Order> finishedOrder = new LinkedList<>();
     //存储故障库
     public static LinkedList<Fault> faultLinkedList = new LinkedList<>();
+    //用户取消操作时返回的备注
+    public static String remarks = "";
 
 
 

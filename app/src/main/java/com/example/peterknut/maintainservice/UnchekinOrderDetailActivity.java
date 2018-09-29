@@ -1,6 +1,7 @@
 package com.example.peterknut.maintainservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.BitmapCallback;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONException;
@@ -77,7 +79,7 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteView);
         videoDiagnoseNoteEditText = findViewById(R.id.videoDiagnoseNoteEditText);
-
+   //     getImage();
 
 
         orderIdTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId());
@@ -97,6 +99,7 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         //        clientNoteTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getRemarks());
         acceptNoteTextView.setText(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getAcceptRemark());
 
+
         checkInButton = findViewById(R.id.checkinButton);
         remoteDiagnoseButton = findViewById(R.id.remoteDiagnoseButton);
         cancelSignButton = findViewById(R.id.unsignedButton);
@@ -115,15 +118,51 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         cancelSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//弹出输入框返回内容
+//                View.OnClickListener clickListener = new View.OnClickListener() {
+//                    SendnotifyDialog sendnotifyDialog;
+//                    @Override
+//                    public void onClick(View v) {
+//                        OkHttpUtils.post()
+//                                .url(GlobalVariablies.NOTIFY_SAVE)
+//                                .addParams("userIds", String.valueOf(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getDealUserId()))
+//                                .addParams("type","3")
+//                                .addParams("title","取消签收")
+//                                .addParams("content",GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId())
+//                                .addParams("remark",sendnotifyDialog.remarksEditText.getText().toString())
+//                                .build()
+//                                .execute(new StringCallback() {
+//                                    @Override
+//                                    public void onError(Call call, Exception e, int id) {
+//
+//                                    }
+//
+//                                    @Override
+//                                    public void onResponse(String response, int id) {
+//
+//                                    }
+//                                });
+
+//                        OkHttpUtils.post()
+//                                .url(GlobalVariablies.NOTIFY_SAVE)
+//                                .addParams("userIds", String.valueOf(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getDealUserId()))
+//                                .addParams("createBy", String.valueOf(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRepairUserId()))
+//                                .addParams("type","3")
+//                                .addParams("title","拒绝签收")
+//                                .addParams("content",GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getOrderId())
+//                                .addParams("remark", String.valueOf(GlobalVariablies.remarks)
+//                    }
+//                };
+//                SendnotifyDialog sendnotifyDialog = new SendnotifyDialog(UnchekinOrderDetailActivity.this,clickListener);
+//                sendnotifyDialog.show();
+
                 GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setStatus(1);
-                GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setAcceptRemark("");
-                GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).setAcceptTime(null);
-                //从待签到工单列表删除，添加到待签收
-                GlobalVariablies.unSignedInOrder.add(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition));
+                GlobalVariablies.unSignedInOrder.add(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition));
                 GlobalVariablies.unCheckInOrder.remove(GlobalVariablies.orderPosition);
 
                 GlobalVariablies.orderStatus = 1;
-                GlobalVariablies.orderPosition = GlobalVariablies.unSignedInOrder.size() - 1;
+                GlobalVariablies.orderPosition = GlobalVariablies.unSignedInOrder.size() -1 ;
 
                 OkHttpUtils.post()
                         .url(GlobalVariablies.UPDATE_ORDER_URL)
@@ -192,13 +231,17 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 2018/9/29 远程视频通信
+
+
+
+
+
             }
         });
         //完成工单
         finishedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2018/9/29 完成工单
                 OkHttpUtils.post()
                         .url(GlobalVariablies.UPDATE_ORDER_URL)
                         .addParams("orderId",GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition).getOrderId())
@@ -220,7 +263,6 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
                 GlobalVariablies.unCommentOrder.add(GlobalVariablies.unCheckInOrder.get(GlobalVariablies.orderPosition));
                 GlobalVariablies.unCheckInOrder.remove(GlobalVariablies.orderPosition);
 
-
                 GlobalVariablies.orderStatus = 4;
                 GlobalVariablies.orderPosition = GlobalVariablies.unCommentOrder.size();
 
@@ -232,5 +274,22 @@ public class UnchekinOrderDetailActivity extends AppCompatActivity {
         });
     }
 
+    //获取图像
+    private void getImage(){
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_IMAGE_URL)
+                .build()
+                .execute(new BitmapCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Bitmap response, int id) {
+                        imageDescriptionImageView.setImageBitmap(response);
+                    }
+                });
+    }
 
 }

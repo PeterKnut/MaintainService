@@ -1,6 +1,7 @@
 package com.example.peterknut.maintainservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.BitmapCallback;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import okhttp3.Call;
@@ -68,6 +70,7 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteTextView = findViewById(R.id.acceptNoteTextView);
         videoDiagnoseTextView = findViewById(R.id.videoDiagnoseTextView);
+     //   getImage();
 
         orderIdTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getOrderId());
         repairTimeTextView.setText(GlobalVariablies.unFinishedOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
@@ -173,9 +176,9 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
                 GlobalVariablies.unFinishedOrder.remove(GlobalVariablies.orderPosition);
 
                 GlobalVariablies.orderStatus = 2;
-                GlobalVariablies.orderPosition = GlobalVariablies.unCheckInOrder.size();
+                GlobalVariablies.orderPosition = GlobalVariablies.unCheckInOrder.size() - 1;
 
-                Intent intent = new Intent(UnfinishedOrderDetailActivity.this, WorkSummaryActivity.class);
+                Intent intent = new Intent(UnfinishedOrderDetailActivity.this, UnchekinOrderDetailActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -183,6 +186,25 @@ public class UnfinishedOrderDetailActivity extends AppCompatActivity {
 
 
 
+
     }
 
+
+    //获取图像
+    private void getImage(){
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_IMAGE_URL)
+                .build()
+                .execute(new BitmapCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Bitmap response, int id) {
+                        imageDescriptionImageView.setImageBitmap(response);
+                    }
+                });
+    }
 }

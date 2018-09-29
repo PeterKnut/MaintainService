@@ -184,18 +184,12 @@ public class LoginActivity extends AppCompatActivity {
                                try {
                                    json = new JSONObject(response);
                                    GlobalVariablies.user = new User(
+                                           json.getLong("userId"),
                                            json.getString("username"),
                                            json.getString("name"),
-                                           json.getString("password"),
+                                           json.getString("email"),
                                            json.getString("mobile"),
-                                           json.getInt("status"),
-                                           (long) 1,
-                                           // TODO: 2018/9/28 用户性别 
- //                                          json.getLong("sex"),
-                                           json.getString("liveAddress"),
-                                           json.getString("province"),
-                                           json.getString("city"),
-                                           json.getString("district")
+                                           json.getString("liveAddress")
                                    );
                                } catch (JSONException e) {
                                    e.printStackTrace();

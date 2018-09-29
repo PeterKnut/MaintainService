@@ -1,6 +1,7 @@
 package com.example.peterknut.maintainservice;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.BitmapCallback;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONException;
@@ -76,6 +78,7 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
         clientNoteTExtView = findViewById(R.id.clientNoteTextView);
         imageDescriptionImageView = findViewById(R.id.imageDescribe);
         acceptNoteEditText = findViewById(R.id.acceptRemarksEditText);
+        getImage();
 
         orderIdTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getOrderId());
         repairTimeTextView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRepairTime().toString());
@@ -93,8 +96,6 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
         // TODO: 2018/9/28 设置客户备注 
         //        clientNoteTExtView.setText(GlobalVariablies.unSignedInOrder.get(GlobalVariablies.orderPosition).getRemarks());
         // TODO: 2018/9/28 设置图片描述
-
-
 
 
         cancelSignButton = findViewById(R.id.unsignedButton);
@@ -170,5 +171,22 @@ public class UnSignedOrderDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getImage(){
+        OkHttpUtils.get()
+                .url(GlobalVariablies.GET_IMAGE_URL)
+                .build()
+                .execute(new BitmapCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Bitmap response, int id) {
+                        imageDescriptionImageView.setImageBitmap(response);
+                    }
+                });
     }
 }

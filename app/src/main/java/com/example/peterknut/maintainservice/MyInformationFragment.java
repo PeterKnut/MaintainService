@@ -71,6 +71,7 @@ public class MyInformationFragment extends Fragment {
         helpButton = view.findViewById(R.id.helpButton);
         settingButton = view.findViewById(R.id.settingButton);
 
+        myNameButton.setText(GlobalVariablies.user.getName());
         myNameButton.setOnClickListener(mClickListener);
         historyOrderButton.setOnClickListener(mClickListener);
         aboutTianduanButton.setOnClickListener(mClickListener);

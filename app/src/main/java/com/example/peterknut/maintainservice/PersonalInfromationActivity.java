@@ -32,12 +32,14 @@ import java.io.IOException;
 public class PersonalInfromationActivity extends AppCompatActivity {
 
 
-    private Button myPhotoButton;
-    private Button myNameButton;
-    private Button myIdNumberButton;
-    private Button myScoreButton;
-    private Button myPhoneNumberButton;
-    private Button myAddressButton;
+    private TextView myPhotoTextView;
+    private TextView myNameTextView;
+    private TextView myIdTextView;
+    private TextView myScoreTextView;
+    private TextView myPhoneTextView;
+    private TextView myAddressTextView;
+    private TextView myUserNameTextView;
+    private TextView myEmailTextView;
 
     //保存图像头片
     private Bitmap head;
@@ -50,16 +52,16 @@ public class PersonalInfromationActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.myPhotoButton:
+                case R.id.myPhotoTextView:
                     // TODO: 2018/9/24 跳转到更换头像页面，并保存到服务器
                     showTypeDialog();
                     System.out.println("点击头像按钮");
                     break;
-                case R.id.myPhoneNumberButton:
+                case R.id.myPhoneTextView:
                     // TODO: 2018/9/24 跳转到修改电话界面 
                     System.out.println("点击我的电话按钮");
                     break;
-                case R.id.myAddressButton:
+                case R.id.myAddressTextView:
                     // TODO: 2018/9/24 点击按钮转到修改地址的页面
                     System.out.println("点击我的地址按钮");
                     break;
@@ -103,7 +105,7 @@ public class PersonalInfromationActivity extends AppCompatActivity {
                          * todo 上传服务器
                          */
                         setPictoView(head);    //保存在SD卡中
-                        myPhotoButton.setCompoundDrawables(null, null, new BitmapDrawable(head), null);
+                        myPhotoTextView.setCompoundDrawables(null, null, new BitmapDrawable(head), null);
                     }
                 }
                 break;
@@ -132,16 +134,23 @@ public class PersonalInfromationActivity extends AppCompatActivity {
     //初始化控件
     public void init() {
 
-        myPhotoButton = findViewById(R.id.myPhotoButton);
-        myNameButton = findViewById(R.id.myNameButton);
-        myIdNumberButton = findViewById(R.id.myIdNumberButton);
-        myScoreButton = findViewById(R.id.myScoreButton);
-        myPhoneNumberButton = findViewById(R.id.myPhoneNumberButton);
-        myAddressButton = findViewById(R.id.myAddressButton);
+        myPhotoTextView = findViewById(R.id.myPhotoTextView);
+        myNameTextView = findViewById(R.id.myNameTextView);
+        myIdTextView = findViewById(R.id.myIdTextView);
+        myScoreTextView = findViewById(R.id.myEmailTextView);
+        myPhoneTextView = findViewById(R.id.myPhoneTextView);
+        myAddressTextView = findViewById(R.id.myAddressTextView);
+        myUserNameTextView = findViewById(R.id.myUserNameTextView);
 
-        myPhotoButton.setOnClickListener(myClickListener);
-        myPhoneNumberButton.setOnClickListener(myClickListener);
-        myAddressButton.setOnClickListener(myClickListener);
+        myUserNameTextView.setText(GlobalVariablies.user.getUsername());
+        myIdTextView.setText(String.valueOf(GlobalVariablies.user.getUserId()));
+        myNameTextView.setText(GlobalVariablies.user.getName());
+        myPhoneTextView.setText(GlobalVariablies.user.getMobile());
+        myAddressTextView.setText(GlobalVariablies.user.getLiveAddress());
+   //         myEmailTextView.setText(GlobalVariablies.user.getEmail());
+
+        myPhoneTextView.setOnClickListener(myClickListener);
+        myAddressTextView.setOnClickListener(myClickListener);
 
 
     }
